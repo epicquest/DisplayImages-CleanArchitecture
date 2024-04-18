@@ -1,4 +1,4 @@
-package com.epicqueststudios.displayimages.base
+package com.epicqueststudios.displayimages.presentation.base
 
 open class BaseEvent<out T>(private val content: T) {
     var handled = false

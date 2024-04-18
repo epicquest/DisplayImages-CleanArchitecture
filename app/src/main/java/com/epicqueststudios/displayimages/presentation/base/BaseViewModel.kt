@@ -1,4 +1,4 @@
-package com.epicqueststudios.displayimages.base
+package com.epicqueststudios.displayimages.presentation.base
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel

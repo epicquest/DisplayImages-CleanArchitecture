@@ -1,10 +1,10 @@
-package com.epicqueststudios.displayimages.base
+package com.epicqueststudios.displayimages.presentation.base
 
 import android.app.Application
 import com.epicqueststudios.displayimages.BuildConfig
-import com.epicqueststudios.displayimages.di.component.AppComponent
-import com.epicqueststudios.displayimages.di.component.DaggerAppComponent
-import com.epicqueststudios.displayimages.di.module.AppModule
+import com.epicqueststudios.displayimages.presentation.di.component.AppComponent
+import com.epicqueststudios.displayimages.presentation.di.component.DaggerAppComponent
+import com.epicqueststudios.displayimages.presentation.di.module.AppModule
 import timber.log.Timber
 
 abstract class BaseApplication : Application() {

@@ -1,4 +1,4 @@
-package com.epicqueststudios.displayimages.di.module
+package com.epicqueststudios.displayimages.presentation.di.module
 
 import dagger.Module
 import dagger.Provides

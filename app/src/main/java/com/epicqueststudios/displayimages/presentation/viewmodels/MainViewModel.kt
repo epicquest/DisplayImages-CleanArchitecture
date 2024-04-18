@@ -1,13 +1,14 @@
-package com.epicqueststudios.displayimages
+package com.epicqueststudios.displayimages.presentation.viewmodels
 
 import android.app.Application
 import android.os.Parcelable
+import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.*
-import com.epicqueststudios.displayimages.base.BaseViewModel
+import com.epicqueststudios.displayimages.presentation.base.BaseViewModel
 import com.epicqueststudios.displayimages.data.ImageItemData
 import com.epicqueststudios.displayimages.data.Resource
 import com.epicqueststudios.displayimages.domain.DownloadImagesUseCase
-import com.epicqueststudios.displayimages.domain.ViewModelFactory
+import com.epicqueststudios.displayimages.presentation.factories.ViewModelFactory
 import kotlinx.coroutines.*
 import timber.log.Timber
 import javax.inject.Inject
@@ -45,11 +46,11 @@ class MainViewModel(
             }
 
         }
-    private fun saveData(value: List<Parcelable>) {
+    fun saveData(value: List<Parcelable>) {
         savedStateHandle[KEY_IMAGES] = value
     }
-
-    private fun retrieveData(): List<Parcelable>? {
+    @VisibleForTesting
+    fun retrieveData(): List<Parcelable>? {
         return savedStateHandle[KEY_IMAGES]
     }
 

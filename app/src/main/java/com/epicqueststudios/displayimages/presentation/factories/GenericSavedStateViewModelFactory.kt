@@ -1,4 +1,4 @@
-package com.epicqueststudios.displayimages.domain
+package com.epicqueststudios.displayimages.presentation.factories
 
 import android.os.Bundle
 import androidx.annotation.MainThread

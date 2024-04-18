@@ -44,10 +44,8 @@ dependencies {
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.12.0'
-     implementation 'com.google.android.material:material:1.11.0'
+    implementation 'com.google.android.material:material:1.11.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-   // implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
-   // implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
 
     implementation platform('com.google.firebase:firebase-bom:32.8.1')
     implementation 'com.google.firebase:firebase-analytics'
@@ -67,19 +65,15 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.10.1'
     implementation "androidx.activity:activity-ktx:$activity_version"
     implementation "com.jakewharton.timber:timber:$timber_version"
-// Coroutines
+    // Coroutines
     api "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_android_version"
     api "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_android_version"
-    /*implementation  ("androidx.work:work-runtime-ktx:$work_version") {
-        exclude group: 'com.google.guava', module: 'listenablefuture'
-    }*/
-// ViewModel Kotlin support
+
+    // ViewModel Kotlin support
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
 
-    // ViewModel and LiveData
-   // implementation  "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
-   // implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_livedata_version"
+
     // Dagger
     implementation "com.google.dagger:dagger:$dagger_version"
     implementation 'androidx.navigation:navigation-fragment-ktx:2.7.7'
@@ -91,7 +85,15 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
     implementation 'com.squareup.okhttp3:logging-interceptor:4.2.1'
 
+    // Dependencies for unit testing
     testImplementation 'junit:junit:4.13.2'
+    testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.1'
+    testImplementation 'androidx.arch.core:core-testing:2.2.0'
+    testImplementation 'io.mockk:mockk:1.12.0'
+
+    testImplementation "org.mockito.kotlin:mockito-kotlin:5.3.1"
+    testImplementation 'androidx.test.ext:junit-ktx:1.1.5'
+    testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.1'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 

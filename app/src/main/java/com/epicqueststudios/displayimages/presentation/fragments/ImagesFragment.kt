@@ -1,4 +1,4 @@
-package com.epicqueststudios.displayimages.presentation
+package com.epicqueststudios.displayimages.presentation.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,11 +7,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.epicqueststudios.displayimages.MainViewModel
-import com.epicqueststudios.displayimages.base.BaseFragment
-import com.epicqueststudios.displayimages.base.getApplicationComponent
+import com.epicqueststudios.displayimages.presentation.viewmodels.MainViewModel
+import com.epicqueststudios.displayimages.presentation.base.BaseFragment
+import com.epicqueststudios.displayimages.presentation.base.getApplicationComponent
 import com.epicqueststudios.displayimages.data.Resource
 import com.epicqueststudios.displayimages.databinding.FragmentImagesBinding
+import com.epicqueststudios.displayimages.presentation.adapters.ImagesAdapter
+import com.epicqueststudios.displayimages.presentation.views.gone
+import com.epicqueststudios.displayimages.presentation.views.visible
 
 class ImagesFragment : BaseFragment<FragmentImagesBinding>() {
     private val mainViewModel: MainViewModel by activityViewModels()

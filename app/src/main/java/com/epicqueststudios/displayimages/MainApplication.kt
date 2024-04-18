@@ -1,5 +1,5 @@
 package com.epicqueststudios.displayimages
 
-import com.epicqueststudios.displayimages.base.BaseApplication
+import com.epicqueststudios.displayimages.presentation.base.BaseApplication
 
 class MainApplication: BaseApplication()

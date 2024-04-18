@@ -1,4 +1,4 @@
-package com.epicqueststudios.displayimages.presentation
+package com.epicqueststudios.displayimages.presentation.adapters
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater

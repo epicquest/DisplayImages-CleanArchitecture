@@ -1,5 +1,6 @@
 package com.epicqueststudios.displayimages.data
 
+import com.epicqueststudios.displayimages.data.repositiories.ImageRepository
 import javax.inject.Inject
 
 class ImageRepositoryImpl @Inject constructor(

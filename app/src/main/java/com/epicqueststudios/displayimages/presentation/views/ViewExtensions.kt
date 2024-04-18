@@ -1,4 +1,4 @@
-package com.epicqueststudios.displayimages.presentation
+package com.epicqueststudios.displayimages.presentation.views
 
 
 import android.content.Context

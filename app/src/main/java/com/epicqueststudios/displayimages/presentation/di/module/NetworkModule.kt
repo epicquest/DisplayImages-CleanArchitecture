@@ -1,6 +1,6 @@
-package com.epicqueststudios.displayimages.di.module
+package com.epicqueststudios.displayimages.presentation.di.module
 
-import com.epicqueststudios.displayimages.data.ImageRepository
+import com.epicqueststudios.displayimages.data.repositiories.ImageRepository
 import com.epicqueststudios.displayimages.data.ImageRepositoryImpl
 import com.epicqueststudios.displayimages.data.ImagesService
 import com.epicqueststudios.displayimages.domain.DownloadImagesUseCase

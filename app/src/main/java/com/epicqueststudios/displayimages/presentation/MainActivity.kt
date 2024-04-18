@@ -2,11 +2,11 @@ package com.epicqueststudios.displayimages.presentation
 
 import android.os.Bundle
 import androidx.activity.viewModels
-import com.epicqueststudios.displayimages.MainViewModel
-import com.epicqueststudios.displayimages.base.BaseActivity
-import com.epicqueststudios.displayimages.base.getApplicationComponent
+import com.epicqueststudios.displayimages.presentation.viewmodels.MainViewModel
+import com.epicqueststudios.displayimages.presentation.base.BaseActivity
+import com.epicqueststudios.displayimages.presentation.base.getApplicationComponent
 import com.epicqueststudios.displayimages.databinding.ActivityMainBinding
-import com.epicqueststudios.displayimages.domain.withFactory
+import com.epicqueststudios.displayimages.presentation.factories.withFactory
 import javax.inject.Inject
 
 class MainActivity : BaseActivity() {

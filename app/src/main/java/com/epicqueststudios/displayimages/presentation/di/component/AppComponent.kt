@@ -1,10 +1,10 @@
-package com.epicqueststudios.displayimages.di.component
+package com.epicqueststudios.displayimages.presentation.di.component
 
 import android.app.Application
 import android.content.Context
-import com.epicqueststudios.displayimages.presentation.ImagesFragment
-import com.epicqueststudios.displayimages.di.module.AppModule
-import com.epicqueststudios.displayimages.di.module.VMFactoryModule
+import com.epicqueststudios.displayimages.presentation.fragments.ImagesFragment
+import com.epicqueststudios.displayimages.presentation.di.module.AppModule
+import com.epicqueststudios.displayimages.presentation.di.module.VMFactoryModule
 import com.epicqueststudios.displayimages.presentation.MainActivity
 import dagger.Component
 import javax.inject.Singleton

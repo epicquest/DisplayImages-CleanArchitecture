@@ -1,13 +1,13 @@
-package com.epicqueststudios.displayimages.base
+package com.epicqueststudios.displayimages.presentation.base
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.epicqueststudios.displayimages.di.component.ActivityComponent
-import com.epicqueststudios.displayimages.di.component.AppComponent
-import com.epicqueststudios.displayimages.di.component.DaggerActivityComponent
-import com.epicqueststudios.displayimages.di.module.ActivityContextModule
-import com.epicqueststudios.displayimages.di.module.AppModule
+import com.epicqueststudios.displayimages.presentation.di.component.ActivityComponent
+import com.epicqueststudios.displayimages.presentation.di.component.AppComponent
+import com.epicqueststudios.displayimages.presentation.di.component.DaggerActivityComponent
+import com.epicqueststudios.displayimages.presentation.di.module.ActivityContextModule
+import com.epicqueststudios.displayimages.presentation.di.module.AppModule
 
 abstract class BaseActivity : AppCompatActivity() {
 
