@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "867512053196",
+    "project_id": "display-images---mondly-task",
+    "storage_bucket": "display-images---mondly-task.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:867512053196:android:e2772b39a628c0a8440169",
+        "android_client_info": {
+          "package_name": "com.epicqueststudios.displayimages"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBNd9NQ_f0S7Ty2UEVs122tLIJSqMSv71M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

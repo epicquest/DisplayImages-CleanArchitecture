@@ -1,20 +1,23 @@
 package com.epicqueststudios.displayimages.presentation
 
-
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.bumptech.glide.Glide
-import com.epicqueststudios.displayimages.R
 import com.epicqueststudios.displayimages.data.ImageItemData
 import com.epicqueststudios.displayimages.databinding.ItemImageBinding
 
-
+@SuppressLint("NotifyDataSetChanged")
 class ImagesAdapter: RecyclerView.Adapter<ImagesAdapter.ImagesViewHolder>() {
 
     private lateinit var binding: ItemImageBinding
     private var imagesList: MutableList<ImageItemData> = mutableListOf()
+
+    fun clearImages() {
+        imagesList.clear()
+        notifyDataSetChanged()
+    }
 
     fun setImages(images: List<ImageItemData>) {
         imagesList.clear()

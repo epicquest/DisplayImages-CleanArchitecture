@@ -3,12 +3,10 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'kotlin-parcelize'
-//    id 'com.google.gms.google-services'
-//    id 'com.google.firebase.crashlytics'
+    id 'com.google.gms.google-services'
+    id 'com.google.firebase.crashlytics'
 }
 android {
-    buildToolsVersion "34.0.0"
-
     defaultConfig {
         applicationId "com.epicqueststudios.displayimages"
         minSdkVersion 23
@@ -51,9 +49,9 @@ dependencies {
    // implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
    // implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
 
-    implementation platform('com.google.firebase:firebase-bom:26.8.0')
-    implementation 'com.google.firebase:firebase-analytics-ktx'
-    implementation 'com.google.firebase:firebase-crashlytics-ktx'
+    implementation platform('com.google.firebase:firebase-bom:32.8.1')
+    implementation 'com.google.firebase:firebase-analytics'
+    implementation 'com.google.firebase:firebase-crashlytics'
     implementation ('androidx.core:core-ktx:1.12.0') {
         exclude group: "com.google.guava", module: "listenablefuture"
     }

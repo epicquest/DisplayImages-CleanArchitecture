@@ -21,12 +21,7 @@ abstract class BaseActivity : AppCompatActivity() {
             .build()
         injectDependencies()
     }
-
     abstract fun injectDependencies()
-
-    companion object {
-        const val TAG = "BaseActivity"
-    }
 }
 
 fun AppCompatActivity.getApplicationComponent(): AppComponent? {

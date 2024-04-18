@@ -11,7 +11,6 @@ import com.epicqueststudios.displayimages.presentation.MainActivity
 import dagger.Component
 import javax.inject.Singleton
 
-
 @Singleton
 @Component(modules = [AppModule::class, ActivityContextModule::class, VMFactoryModule::class, NetworkModule::class])
 interface ActivityComponent {

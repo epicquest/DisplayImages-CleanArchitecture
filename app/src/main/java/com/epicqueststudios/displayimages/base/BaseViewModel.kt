@@ -7,7 +7,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlin.coroutines.CoroutineContext
 
-open class BaseViewModel(val app: Application, val uiContext: CoroutineContext): AndroidViewModel(app),
+open class BaseViewModel(val app: Application, private val uiContext: CoroutineContext): AndroidViewModel(app),
     CoroutineScope {
 
     var ioCoroutineContext = Dispatchers.IO

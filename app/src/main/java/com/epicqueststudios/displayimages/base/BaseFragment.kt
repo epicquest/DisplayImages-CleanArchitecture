@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.CallSuper
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import com.epicqueststudios.displayimages.di.component.ActivityComponent
@@ -31,8 +30,4 @@ abstract class BaseFragment<T: ViewDataBinding> : Fragment() {
 
     abstract fun inflateFragment(inflater: LayoutInflater, container: ViewGroup?): T
 
-    companion object {
-
-        private val TAG = BaseFragment::class.java.simpleName
-    }
 }

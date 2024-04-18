@@ -1,7 +1,6 @@
 package com.epicqueststudios.displayimages.base
 
 open class BaseEvent<out T>(private val content: T) {
-
     var handled = false
         private set
 

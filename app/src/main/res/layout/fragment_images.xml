@@ -11,14 +11,29 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvError"
-            android:layout_width="wrap_content"
+            style="@style/ErrorText"
+            android:padding="@dimen/padding_medium"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textColor="@android:color/holo_red_dark"
+            android:layout_margin="@dimen/margin_medium"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Error" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnRetry"
+            android:visibility="gone"
+            tools:visibility="visible"
+            style="@style/RetryButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/retry"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvError"/>
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/swipeRefresh"
@@ -33,6 +48,7 @@
             app:layout_constraintVertical_bias="0.0">
 
             <androidx.recyclerview.widget.RecyclerView
+                tools:visibility="gone"
                 android:id="@+id/rvImages"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

@@ -1,13 +1,8 @@
 package com.epicqueststudios.displayimages.presentation
 
 import android.os.Bundle
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
-import android.view.Menu
-import android.view.MenuItem
 import androidx.activity.viewModels
 import com.epicqueststudios.displayimages.MainViewModel
-import com.epicqueststudios.displayimages.R
 import com.epicqueststudios.displayimages.base.BaseActivity
 import com.epicqueststudios.displayimages.base.getApplicationComponent
 import com.epicqueststudios.displayimages.databinding.ActivityMainBinding

@@ -44,8 +44,12 @@ class ImagesFragment : BaseFragment<FragmentImagesBinding>() {
             )
         }
         binding.swipeRefresh.setOnRefreshListener {
+            imagesAdapter.clearImages()
             mainViewModel.downloadImages(true)
             binding.swipeRefresh.isRefreshing = false
+        }
+        binding.btnRetry.setOnClickListener {
+            mainViewModel.downloadImages(true)
         }
         initObservers()
     }
@@ -74,11 +78,13 @@ class ImagesFragment : BaseFragment<FragmentImagesBinding>() {
     private fun showLoading() {
         binding.progress.visible()
         binding.tvError.gone()
+        binding.btnRetry.gone()
     }
 
     private fun showError(message: String?) {
         binding.progress.gone()
         binding.tvError.text = message
         binding.tvError.visible()
+        binding.btnRetry.visible()
     }
 }

@@ -12,7 +12,6 @@ import javax.inject.Singleton
 @Singleton
 @Component(modules = [AppModule::class, VMFactoryModule::class])
 interface AppComponent {
-
     fun provideContext(): Context
     fun provideApplication(): Application
     fun inject(mainActivity: MainActivity)
