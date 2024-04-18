@@ -38,10 +38,6 @@ class NetworkModule {
             .build()
     }
 
-    companion object  {
-        const val BASE_URL = "https://europe-west1-mondly-workflows.cloudfunctions.net/"
-    }
-
     @Singleton
     @Provides
     fun provideImagesService(retrofit: Retrofit) = retrofit.create(ImagesService::class.java)
@@ -52,6 +48,10 @@ class NetworkModule {
     @Singleton
     @Provides
     fun provideDownloadImagesUseCase(repository: ImageRepository):DownloadImagesUseCase = DownloadImagesUseCase(repository)
+
+    companion object  {
+        const val BASE_URL = "https://europe-west1-mondly-workflows.cloudfunctions.net/"
+    }
 
 
 }

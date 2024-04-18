@@ -4,8 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,7 +13,7 @@ import com.epicqueststudios.displayimages.base.getApplicationComponent
 import com.epicqueststudios.displayimages.data.Resource
 import com.epicqueststudios.displayimages.databinding.FragmentImagesBinding
 
-class FirstFragment : BaseFragment<FragmentImagesBinding>() {
+class ImagesFragment : BaseFragment<FragmentImagesBinding>() {
     private val mainViewModel: MainViewModel by activityViewModels()
     private lateinit var imagesAdapter: ImagesAdapter
     override fun injectDependencies() {
@@ -45,6 +43,14 @@ class FirstFragment : BaseFragment<FragmentImagesBinding>() {
                 )
             )
         }
+        binding.swipeRefresh.setOnRefreshListener {
+            mainViewModel.downloadImages(true)
+            binding.swipeRefresh.isRefreshing = false
+        }
+        initObservers()
+    }
+
+    private fun initObservers() {
         mainViewModel.images.observe(viewLifecycleOwner) {
             when(it) {
                 is Resource.Error -> {
@@ -55,18 +61,16 @@ class FirstFragment : BaseFragment<FragmentImagesBinding>() {
                 }
                 is Resource.Success -> {
                     binding.progress.gone()
-                    imagesAdapter.setImages(it.data!!) //TODO MS
-                    Toast.makeText(context, "downloaded data", Toast.LENGTH_SHORT).show()
+                    imagesAdapter.setImages(it.data ?: listOf())
                 }
             }
         }
-       /* mainViewModel.savedData.observe(viewLifecycleOwner) {
-                binding.progress.gone()
-                imagesAdapter.setImages(it)
-                Toast.makeText(context, "savedData", Toast.LENGTH_SHORT).show()
-        }*/
     }
 
+    override fun onDestroyView() {
+        mainViewModel.images.removeObservers(this)
+        super.onDestroyView()
+    }
     private fun showLoading() {
         binding.progress.visible()
         binding.tvError.gone()

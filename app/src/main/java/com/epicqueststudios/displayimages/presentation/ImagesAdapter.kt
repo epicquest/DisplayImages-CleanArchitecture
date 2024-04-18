@@ -40,22 +40,11 @@ class ImagesAdapter: RecyclerView.Adapter<ImagesAdapter.ImagesViewHolder>() {
             binding.itemImageTitle.text = data.item.attributes.name
             binding.itemImageDescription.text = data.item.attributes.description
 
-            val drawablePlaceholder = CircularProgressDrawable(binding.root.context)
-            drawablePlaceholder.setColorSchemeColors(
-                R.color.purple_500,
-                R.color.purple_700,
-                R.color.teal_200
-            )
-            drawablePlaceholder.setCenterRadius(30f)
-            drawablePlaceholder.setStrokeWidth(5f)
-            // set all other properties as you would see fit and start it
-            // set all other properties as you would see fit and start it
-            drawablePlaceholder.start()
             Glide
                 .with(binding.itemImagePicture)
                 .load(data.item.attributes.imageInfo.imageUrl)
                 .fitCenter()
-                .placeholder(drawablePlaceholder)
+                .placeholder(android.R.drawable.ic_menu_gallery)
                 .into(binding.itemImagePicture)
         }
     }

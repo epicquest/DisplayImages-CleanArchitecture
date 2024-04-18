@@ -9,13 +9,11 @@ class ImageRepositoryImpl @Inject constructor(
         try {
             val response = imagesService.getImageList()
             if (response.isSuccessful) {
-                val body = response.body()
-                return Resource.Success(body!!)
+                return Resource.Success(response.body()!!)
             }
-            return Resource.Error("Failed to fetch data.")
+            return Resource.Error(response.errorBody().toString())
         } catch (e: Exception) {
-            return Resource.Error("An unknown error occurred.") //TODO MS
+            return Resource.Error("An unknown error occurred.")
         }
     }
-
 }
