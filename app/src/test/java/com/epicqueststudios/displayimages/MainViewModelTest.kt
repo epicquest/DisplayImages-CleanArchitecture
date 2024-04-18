@@ -8,9 +8,11 @@ import com.epicqueststudios.displayimages.data.ImageItem
 import com.epicqueststudios.displayimages.data.ImageItemAttributes
 import com.epicqueststudios.displayimages.data.ImageItemData
 import com.epicqueststudios.displayimages.data.ImageItemInfo
-import com.epicqueststudios.displayimages.data.Resource
+import com.epicqueststudios.displayimages.domain.Resource
 import com.epicqueststudios.displayimages.domain.DownloadImagesUseCase
+import com.epicqueststudios.displayimages.presentation.models.ImageUIItem
 import io.mockk.*
+import io.mockk.InternalPlatformDsl.toArray
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.TestCoroutineDispatcher
@@ -57,29 +59,31 @@ class MainViewModelTest {
     @Test
     fun `downloadImages success`() = testScope.runBlockingTest {
         val imageData = listOf(ImageItemData(ImageItem(1, ImageItemAttributes("name1", "desc1", ImageItemInfo("url1")))), ImageItemData(ImageItem(2, ImageItemAttributes("name2", "desc2", ImageItemInfo("url2")))))
-        val successResource = Resource.Success(DownloadImagesResponse(imageData))
+        val successResource = Resource.Success(imageData.map {
+            ImageUIItem(it.item.id, it.item.attributes.name, it.item.attributes.description, it.item.attributes.imageInfo.imageUrl)
+        })
         coEvery { downloadImagesUseCase.downloadImages() } returns successResource
         coEvery { viewModel.retrieveData() } returns null
 
-        val observer = mockk<Observer<Resource<List<ImageItemData>>>>()
+        val observer = mockk<Observer<Resource<List<ImageUIItem>>>>()
         every { observer.onChanged(any()) } answers {}
         viewModel.images.observeForever(observer)
 
         viewModel.downloadImages(forced = true)
         verify { observer.onChanged(any()) }
         verify { observer.onChanged(any()) }
-        coVerify { savedStateHandle[MainViewModel.KEY_IMAGES] = imageData }
+        coVerify {viewModel.saveData(any()) }
         coVerify(exactly = 1) { downloadImagesUseCase.downloadImages() }
     }
 
     @Test
     fun `downloadImages error`() = testScope.runBlockingTest {
         val errorMessage = "Failed to download images"
-        val errorResource:Resource.Error<DownloadImagesResponse> = Resource.Error(errorMessage)
+        val errorResource: Resource.Error<List<ImageUIItem>> = Resource.Error(errorMessage)
         coEvery { downloadImagesUseCase.downloadImages() } returns errorResource
         coEvery { viewModel.retrieveData() } returns null
 
-        val observer = mockk<Observer<Resource<List<ImageItemData>>>>()
+        val observer = mockk<Observer<Resource<List<ImageUIItem>>>>()
         every { observer.onChanged(any()) } answers {}
         viewModel.images.observeForever(observer)
 
@@ -92,13 +96,13 @@ class MainViewModelTest {
     @Test
     fun `downloadImages cache hit`() = testScope.runBlockingTest {
         val imageData = listOf(ImageItemData(ImageItem(1, ImageItemAttributes("name1", "desc1", ImageItemInfo("url1")))), ImageItemData(ImageItem(2, ImageItemAttributes("name2", "desc2", ImageItemInfo("url2")))))
-        val successResource = Resource.Success(DownloadImagesResponse(listOf()))
+        val successResource = Resource.Success(listOf<ImageUIItem>())
         coEvery { downloadImagesUseCase.downloadImages() } returns successResource
         coEvery { viewModel.retrieveData() } returns imageData
 
         every { savedStateHandle.get<List<ImageItemData>>(MainViewModel.KEY_IMAGES) } returns imageData
 
-        val observer = mockk<Observer<Resource<List<ImageItemData>>>>()
+        val observer = mockk<Observer<Resource<List<ImageUIItem>>>>()
         viewModel.images.observeForever(observer)
 
         viewModel.downloadImages(forced = false)
@@ -113,7 +117,7 @@ class MainViewModelTest {
         val exceptionMessage = "Failed to download images"
         coEvery { downloadImagesUseCase.downloadImages() } throws Exception(exceptionMessage)
 
-        val observer = mockk<Observer<Resource<List<ImageItemData>>>>()
+        val observer = mockk<Observer<Resource<List<ImageUIItem>>>>()
         viewModel.images.observeForever(observer)
 
         viewModel.downloadImages(forced = true)

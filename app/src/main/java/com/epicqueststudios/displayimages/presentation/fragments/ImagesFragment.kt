@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.epicqueststudios.displayimages.presentation.viewmodels.MainViewModel
 import com.epicqueststudios.displayimages.presentation.base.BaseFragment
 import com.epicqueststudios.displayimages.presentation.base.getApplicationComponent
-import com.epicqueststudios.displayimages.data.Resource
+import com.epicqueststudios.displayimages.domain.Resource
 import com.epicqueststudios.displayimages.databinding.FragmentImagesBinding
 import com.epicqueststudios.displayimages.presentation.adapters.ImagesAdapter
 import com.epicqueststudios.displayimages.presentation.views.gone

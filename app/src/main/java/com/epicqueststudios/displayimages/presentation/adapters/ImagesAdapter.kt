@@ -5,21 +5,21 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.epicqueststudios.displayimages.data.ImageItemData
 import com.epicqueststudios.displayimages.databinding.ItemImageBinding
+import com.epicqueststudios.displayimages.presentation.models.ImageUIItem
 
 @SuppressLint("NotifyDataSetChanged")
 class ImagesAdapter: RecyclerView.Adapter<ImagesAdapter.ImagesViewHolder>() {
 
     private lateinit var binding: ItemImageBinding
-    private var imagesList: MutableList<ImageItemData> = mutableListOf()
+    private var imagesList: MutableList<ImageUIItem> = mutableListOf()
 
     fun clearImages() {
         imagesList.clear()
         notifyDataSetChanged()
     }
 
-    fun setImages(images: List<ImageItemData>) {
+    fun setImages(images: List<ImageUIItem>) {
         imagesList.clear()
         imagesList.addAll(images)
         notifyDataSetChanged()
@@ -39,13 +39,13 @@ class ImagesAdapter: RecyclerView.Adapter<ImagesAdapter.ImagesViewHolder>() {
     inner class ImagesViewHolder(
         private val binding: ItemImageBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(data: ImageItemData) {
-            binding.itemImageTitle.text = data.item.attributes.name
-            binding.itemImageDescription.text = data.item.attributes.description
+        fun bind(item: ImageUIItem) {
+            binding.itemImageTitle.text = item.name
+            binding.itemImageDescription.text = item.description
 
             Glide
                 .with(binding.itemImagePicture)
-                .load(data.item.attributes.imageInfo.imageUrl)
+                .load(item.imageUrl)
                 .fitCenter()
                 .placeholder(android.R.drawable.ic_menu_gallery)
                 .into(binding.itemImagePicture)
