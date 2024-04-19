@@ -62,7 +62,7 @@ class ImagesFragment : BaseFragment<FragmentImagesBinding>() {
         mainViewModel.images.observe(viewLifecycleOwner) {
             when(it) {
                 is Resource.Error -> {
-                    showError(it.message ?: getString(R.string.unknown_error))
+                    showError(if (it.message?.isNotBlank() == true) it.message else getString(R.string.unknown_error))
                 }
                 is Resource.Loading -> {
                     showLoading()
