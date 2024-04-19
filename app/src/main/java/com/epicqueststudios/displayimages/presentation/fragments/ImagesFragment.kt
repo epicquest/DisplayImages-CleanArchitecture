@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.epicqueststudios.displayimages.R
 import com.epicqueststudios.displayimages.presentation.viewmodels.MainViewModel
 import com.epicqueststudios.displayimages.presentation.base.BaseFragment
 import com.epicqueststudios.displayimages.presentation.base.getApplicationComponent
@@ -61,7 +62,7 @@ class ImagesFragment : BaseFragment<FragmentImagesBinding>() {
         mainViewModel.images.observe(viewLifecycleOwner) {
             when(it) {
                 is Resource.Error -> {
-                    showError(it.message)
+                    showError(it.message ?: getString(R.string.unknown_error))
                 }
                 is Resource.Loading -> {
                     showLoading()
@@ -84,7 +85,7 @@ class ImagesFragment : BaseFragment<FragmentImagesBinding>() {
         binding.btnRetry.gone()
     }
 
-    private fun showError(message: String?) {
+    private fun showError(message: String) {
         binding.progress.gone()
         binding.tvError.text = message
         binding.tvError.visible()

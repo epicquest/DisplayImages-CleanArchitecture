@@ -1,8 +1,6 @@
 package com.epicqueststudios.displayimages.presentation.viewmodels
 
 import android.app.Application
-import android.os.Parcelable
-import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.*
 import com.epicqueststudios.displayimages.presentation.base.BaseViewModel
 import com.epicqueststudios.displayimages.domain.Resource
@@ -23,33 +21,16 @@ class MainViewModel(
     private val _images = MutableLiveData<Resource<List<ImageUIItem>>>()
     val images: LiveData<Resource<List<ImageUIItem>>> = _images
 
-        fun downloadImages(forced: Boolean) {
-            viewModelScope.launch {
-                try {
-                    _images.value = Resource.Loading()
-                    val savedList = retrieveData() as List<ImageUIItem>? ?: listOf()
-                    if (!forced && savedList.isNotEmpty()) {
-                        _images.value = Resource.Success(savedList)
-                    } else {
-                        val response = downloadImagesUseCase.downloadImages()
-                        if (response is Resource.Success) {
-                            saveData(response.data!!)
-                        }
-                        _images.value = response
-                    }
-                } catch (e: Exception) {
-                    _images.value = Resource.Error(e.message!!)
-                    Timber.e(e)
-                }
+    fun downloadImages(forced: Boolean) {
+        viewModelScope.launch {
+            try {
+                _images.value = Resource.Loading()
+                _images.value = downloadImagesUseCase.downloadImages(savedStateHandle, forced)
+            } catch (e: Exception) {
+                _images.value = Resource.Error(e.message?: "")
+                Timber.e(e)
             }
-
         }
-    fun saveData(value: List<Parcelable>) {
-        savedStateHandle[KEY_IMAGES] = value
-    }
-    @VisibleForTesting
-    fun retrieveData(): List<Parcelable>? {
-        return savedStateHandle[KEY_IMAGES]
     }
 
     class Factory @Inject constructor(

@@ -1,8 +1,9 @@
 package com.epicqueststudios.displayimages.data.repositiories
 
-import com.epicqueststudios.displayimages.data.DownloadImagesResponse
+import androidx.lifecycle.SavedStateHandle
+import com.epicqueststudios.displayimages.data.network.DownloadImagesResponse
 import com.epicqueststudios.displayimages.domain.Resource
 
 interface ImageRepository {
-    suspend fun downloadImageList(): Resource<DownloadImagesResponse>
+    suspend fun downloadImageList(savedStateHandle: SavedStateHandle, forced: Boolean): Resource<DownloadImagesResponse>
 }

@@ -1,4 +1,4 @@
-package com.epicqueststudios.displayimages.data
+package com.epicqueststudios.displayimages.data.models
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
